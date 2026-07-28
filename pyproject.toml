@@ -1,0 +1,15 @@
+[project]
+name = "autolineage-demo-pipelines"
+version = "0.1.0"
+description = "Small PySpark/Delta pipeline used as the AutoLineage demo target"
+requires-python = ">=3.10,<3.13"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
