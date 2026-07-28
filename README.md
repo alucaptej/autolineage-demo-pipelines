@@ -24,6 +24,20 @@ export DATAHUB_GMS_TOKEN=...   # personal access token for your DataHub
 ./run.sh jobs/merge_upsert.py
 ```
 
+## How AutoLineage repairs this repo
+
+This repo is the *patient*. [AutoLineage](https://github.com/alucaptej/autolineage)
+enforces `expectations.json` against the live DataHub graph after every pipeline run
+(the Makefile pokes its run marker, standing in for a scheduler post-run hook). When a
+run violates the contract, the agent investigates via the DataHub MCP server using the
+playbook in `skills/datahub-lineage-debug/SKILL.md`, and ships its fix as a PR here —
+CI-gated, validated pre-merge in an isolated DataHub namespace, merged by exact SHA.
+[PR #1](https://github.com/alucaptej/autolineage-demo-pipelines/pull/1) is such an
+agent-authored merge.
+
+Demo mechanics: `make run` (healthy), `make break` (plausible regression + broken run),
+`make reset-data`.
+
 ## License
 
 [Apache-2.0](./LICENSE)
