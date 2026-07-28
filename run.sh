@@ -13,7 +13,7 @@ export PYSPARK_PYTHON="$PWD/.venv/bin/python"
 export PYSPARK_DRIVER_PYTHON="$PWD/.venv/bin/python"
 
 exec .venv/bin/spark-submit \
-  --packages io.acryl:acryl-spark-lineage_2.12:0.2.17,io.delta:delta-spark_2.12:3.3.2 \
+  --packages io.acryl:acryl-spark-lineage:0.2.17,io.delta:delta-spark_2.12:3.3.2 \
   --properties-file conf/spark.conf \
   --conf "spark.datahub.rest.token=${DATAHUB_GMS_TOKEN:-}" \
   "$@" \
