@@ -17,7 +17,7 @@ export PYSPARK_DRIVER_PYTHON="$VENV_DIR/bin/python"
 
 # Absolute data root keeps dataset URNs canonical — relative paths fragment the
 # lineage graph into duplicate entities (one URN per working directory).
-export DATA_DIR="${DATA_DIR:-/private/tmp/lakehouse}"
+export DATA_DIR="${DATA_DIR:-data}"
 
 exec "$VENV_DIR/bin/spark-submit" \
   --packages io.acryl:acryl-spark-lineage:0.2.17,io.delta:delta-spark_2.12:3.3.2 \
