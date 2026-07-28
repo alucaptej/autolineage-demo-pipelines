@@ -1,3 +1,14 @@
 {
-  "note": "lineage contract lands with the AutoLineage bridge"
+  "pipeline": "merge_upsert_curated",
+  "data_root": "/private/tmp/lakehouse",
+  "expectations": [
+    {
+      "id": "curated-events-fed-by-raw-events",
+      "description": "curated_events must be lineage-connected to raw_events through the merge_upsert_curated Spark job",
+      "downstream": "urn:li:dataset:(urn:li:dataPlatform:file,/private/tmp/lakehouse/curated_events,PROD)",
+      "upstream": "urn:li:dataset:(urn:li:dataPlatform:file,/private/tmp/lakehouse/raw_events,PROD)",
+      "via_flow": "urn:li:dataFlow:(spark,merge_upsert_curated,default)",
+      "max_hops": 2
+    }
+  ]
 }

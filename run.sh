@@ -12,6 +12,10 @@ export PATH="$JAVA_HOME/bin:$PATH"
 export PYSPARK_PYTHON="$PWD/.venv/bin/python"
 export PYSPARK_DRIVER_PYTHON="$PWD/.venv/bin/python"
 
+# Absolute data root keeps dataset URNs canonical — relative paths fragment the
+# lineage graph into duplicate entities (one URN per working directory).
+export DATA_DIR="${DATA_DIR:-/private/tmp/lakehouse}"
+
 exec .venv/bin/spark-submit \
   --packages io.acryl:acryl-spark-lineage:0.2.17,io.delta:delta-spark_2.12:3.3.2 \
   --properties-file conf/spark.conf \
