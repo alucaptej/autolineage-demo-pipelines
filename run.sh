@@ -19,7 +19,7 @@ export PYSPARK_DRIVER_PYTHON="$VENV_DIR/bin/python"
 # lineage graph into duplicate entities (one URN per working directory).
 # Must stay in sync with expectations.json "data_root"
 # (incident urn:li:incident:24efa153-a224-4648-afda-8fa8f777db50).
-export DATA_DIR="${DATA_DIR:-/private/tmp/lakehouse}"
+export DATA_DIR="${DATA_DIR:-data}"
 
 # The lineage emission endpoint is owned by this entrypoint, not by
 # conf/spark.conf: a stale or locally edited spark.datahub.rest.server makes
