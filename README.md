@@ -20,9 +20,16 @@ this repo; its merged PRs are visible in the history.
 python3.12 -m venv .venv
 .venv/bin/pip install "pyspark==3.5.6" "delta-spark==3.3.2" ruff pytest
 export DATAHUB_GMS_TOKEN=...   # personal access token for your DataHub
+export DATAHUB_GMS_URL=...     # optional, defaults to http://localhost:8080
 ./run.sh jobs/seed_raw.py
 ./run.sh jobs/merge_upsert.py
 ```
+
+`run.sh` owns the lineage emission endpoint (`spark.datahub.rest.server`) and pins it
+over `conf/spark.conf`, so a drifted properties file cannot silently mute emission. It
+also refuses to launch when that endpoint is unreachable — a run that cannot emit
+lineage fails loudly instead of reporting green. Set `DATAHUB_EMIT_PRECHECK=0` to skip
+that probe for offline/dev runs.
 
 ## How AutoLineage repairs this repo
 
