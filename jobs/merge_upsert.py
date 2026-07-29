@@ -1,8 +1,4 @@
-"""Upsert raw_events into curated_events via Delta MERGE INTO.
-
-Lineage note: MERGE INTO is only captured by the DataHub Spark listener when
-enhanced MERGE extraction is enabled in the Spark conf (see conf/spark.conf).
-"""
+"""Upsert raw_events into curated_events via Delta MERGE INTO."""
 
 import os
 
