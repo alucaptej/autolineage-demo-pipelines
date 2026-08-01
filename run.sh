@@ -22,7 +22,7 @@ export PYSPARK_DRIVER_PYTHON="$VENV_DIR/bin/python"
 # incident urn:li:incident:163ae9e1-c0de-463f-aa95-732812cac358).
 # Keep this a single unindented `export DATA_DIR=` line with no trailing comment:
 # the Makefile `break` target rewrites it with a `^export DATA_DIR=` sed anchor.
-export DATA_DIR="${DATA_DIR:-/private/tmp/lakehouse}"
+export DATA_DIR="${DATA_DIR:-data}"
 
 # The lineage emission endpoint is owned by this entrypoint, not by
 # conf/spark.conf: a stale or locally edited spark.datahub.rest.server makes
